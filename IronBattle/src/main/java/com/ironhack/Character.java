@@ -1,15 +1,18 @@
 package com.ironhack;
 import java.util.UUID;
 
-public abstract class Character {
+public abstract class Character implements Attacker {
     private final String id = UUID.randomUUID().toString();
     private String name;
     private int hp;
     private boolean isAlive = true;
 
+    private final int STARTING_HP;
+
     public Character(String name, int hp){
         this.name = name;
         this.hp = hp;
+        this.STARTING_HP = hp;
     }
 
     //getters
@@ -24,6 +27,10 @@ public abstract class Character {
     }
     public boolean getLifeStatus(){
         return this.isAlive;
+    }
+
+    public int getSTARTING_HP() {
+        return STARTING_HP;
     }
 
     //setters
