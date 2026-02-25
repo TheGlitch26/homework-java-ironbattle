@@ -5,8 +5,48 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
     public static void main(String[] args) {
-        Wizard character1 = createWizard("Gandalf");
-        Warrior character2 = createWarrior("Heracles");
+        Character character1;
+        Character character2;
+
+        String name1;
+        String type1;
+        String name2;
+        String type2;
+
+        try(Scanner scanner = new Scanner(System.in)){
+            System.out.println("Please enter a name for Player1: ");
+            name1 = scanner.nextLine();
+            System.out.println("Please enter a character type for Player1: (wizard or warrior only)");
+            type1 = scanner.next();
+            scanner.nextLine();
+
+            System.out.println("Please enter a name for Player2: ");
+            name2 = scanner.nextLine();
+            System.out.println("Please enter a character type for Player2: (wizard or warrior only)");
+            type2 = scanner.next();
+            scanner.nextLine();
+        }
+
+        if(type1.equals("wizard")){
+            character1 = createWizard(name1);
+        }
+        else if(type1.equals("warrior")){
+            character1 = createWarrior(name1);
+        }
+        else {
+            throw new IllegalArgumentException("Wrong character type! warrior or wizard only!");
+        }
+
+        if(type2.equals("wizard")){
+            character2 = createWizard(name2);
+        }
+        else if(type2.equals("warrior")){
+            character2 = createWarrior(name2);
+        }
+        else {
+            throw new IllegalArgumentException("Wrong character type! warrior or wizard only!");
+        }
+
 
         startBattle(character1, character2);
     }
